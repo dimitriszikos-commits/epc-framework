@@ -29,7 +29,7 @@ Rather than universally applying a single imputer, EPC routes features to the ma
 
 ---
 
-## 🚀 Repository Structure
+## Repository Structure
 
 *   `data/`
     *   `synthetic/`: Scripts to generate the engineered synthetic ICU cohort ($n=10000$).
@@ -43,7 +43,7 @@ Rather than universally applying a single imputer, EPC routes features to the ma
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 Clone the repository and install the required dependencies:
 
