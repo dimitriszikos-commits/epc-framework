@@ -5,7 +5,7 @@ Missing data in clinical datasets frequently acts as a predictive clinical proxy
 
 The **Empirical Phenotype Classification (EPC)** framework is a supervised data-engineering pipeline designed to systematically characterize the underlying mechanism of missingness prior to data imputation. By isolating true clinical phenotypes (Missing Not At Random - MNAR) from protocol-based omissions (MAR) and administrative noise (MCAR), EPC preserves clinical risk vectors and optimizes predictive modeling for highly interpretable algorithms like Logistic Regression.
 
-## 🧠 The EPC Pipeline
+## The EPC Pipeline
 
 The framework operates as a sequential, model-agnostic decision engine that evaluates structural missingness through four distinct phases
 
