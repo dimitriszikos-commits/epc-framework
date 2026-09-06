@@ -29,3 +29,39 @@ Clone the repository and install the required dependencies:
 git clone [https://github.com/dzikos/epc-framework.git](https://github.com/dzikos/epc-framework.git)
 cd epc-framework
 pip install -r requirements.txt
+
+
+```mermaid
+graph LR
+    %% Left Section: Input
+    subgraph INPUT [INPUT: Raw EHR Data]
+        A[Data Matrix] --> B[Missing NaN Cells]
+    end
+
+    %% Middle Section: EPC Adjudication
+    subgraph EPC [EPC Framework Adjudication]
+        C[1. Entropy Filter]
+        D[2. k-way Scanner]
+        E[3. Clinical Gatekeeper]
+    end
+
+    %% Right Section: Output & Routing
+    subgraph OUTPUT [OUTPUT: Reconstructed Dataset]
+        F[Standard Imputation]
+        G[Selective Feature Engineering]
+    end
+    
+    H([Predictive Model Deployment])
+
+    %% Connections
+    B -->|Filter| C
+    B -->|Scan| D
+    B -->|Audit| E
+
+    C -->|Clerical Noise| F
+    D -->|Protocol Bundles| F
+    E -->|Outcome Predictive| G
+
+    F --> H
+    G --> H
+```
