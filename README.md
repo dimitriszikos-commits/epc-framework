@@ -29,6 +29,7 @@ Clone the repository and install the required dependencies:
 git clone [https://github.com/dzikos/epc-framework.git](https://github.com/dzikos/epc-framework.git)
 cd epc-framework
 pip install -r requirements.txt
+```
 
 
 ```mermaid
