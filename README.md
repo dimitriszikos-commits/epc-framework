@@ -29,3 +29,50 @@ Clone the repository and install the required dependencies:
 git clone [https://github.com/dzikos/epc-framework.git](https://github.com/dzikos/epc-framework.git)
 cd epc-framework
 pip install -r requirements.txt
+
+
+graph LR
+    %% Styling definitions for a minimalist, B&W academic look
+    classDef default fill:#ffffff,stroke:#000000,stroke-width:1px,color:#000000,font-family:Times New Roman;
+    classDef highlight fill:#f4f4f4,stroke:#000000,stroke-width:2px,color:#000000,font-family:Times New Roman;
+    classDef endpoint fill:#e8e8e8,stroke:#000000,stroke-width:2px,color:#000000,font-family:Times New Roman,font-weight:bold;
+
+    %% Left Section: Input
+    subgraph INPUT [INPUT: Raw EHR Data]
+        direction TB
+        A[Data Matrix] --> B[Missing 'NaN' Cells]
+    end
+
+    %% Middle Section: EPC Adjudication
+    subgraph EPC [EPC Framework Adjudication]
+        direction TB
+        C[1. Entropy Filter<br/>Isolates Random Clerical Noise]
+        D[2. k-way Scanner<br/>Maps Structural Protocol Bundles]
+        E[3. Clinical Gatekeeper<br/>Identifies Predictive Phenotypes]
+    end
+
+    %% Right Section: Output & Routing
+    subgraph OUTPUT [OUTPUT: Reconstructed Dataset]
+        direction TB
+        F[Standard Imputation<br/>Median Substitution / MICE]
+        G[Selective Feature Engineering<br/>Binary Indicators _missing = 1]
+    end
+    
+    H([Predictive Model Deployment])
+
+    %% Data Flow Connections
+    B -->|Filter| C
+    B -->|Scan| D
+    B -->|Audit| E
+
+    C -->|Clerical Noise| F
+    D -->|Protocol Bundles| F
+    E -->|Outcome Predictive| G
+
+    F --> H
+    G --> H
+
+    %% Apply Classes
+    class INPUT,EPC,OUTPUT default;
+    class A,B,C,D,E,F,G highlight;
+    class H endpoint;
